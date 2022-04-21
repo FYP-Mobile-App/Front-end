@@ -11,9 +11,10 @@ export default class SignInPage extends React.Component {
   };
 
   handleChange = (event) => {
+    const value = event.target.value;
     this.setState({
-      phone: event.target.value,
-      password: event.target.value,
+      ...this.state,
+      [event.target.name]: value,
     });
   };
 
@@ -28,6 +29,7 @@ export default class SignInPage extends React.Component {
     axios.post(`http://localhost:9900/auth/login`, user).then((res) => {
       console.log(res);
       console.log(res.data);
+      console.log(user);
     });
   };
 

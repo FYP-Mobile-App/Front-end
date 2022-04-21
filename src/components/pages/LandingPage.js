@@ -15,7 +15,7 @@ export default function LandingPage() {
         </Link>
         <Link to="/register">
           <button className="primary-button" id="reg_btn">
-            <span>register </span>
+            <span>register</span>
           </button>
         </Link>
       </div>

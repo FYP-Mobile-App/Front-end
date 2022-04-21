@@ -14,9 +14,10 @@ export default class SignUpPage extends React.Component {
   };
 
   handleChange = (event) => {
+    const value = event.target.value;
     this.setState({
-      phone: event.target.value,
-      password: event.target.value,
+      ...this.state,
+      [event.target.name]: value,
       publickey: "",
       privatekey: "",
     });
@@ -27,11 +28,16 @@ export default class SignUpPage extends React.Component {
 
     let account = web3.eth.accounts.create();
 
+    let encryptedPrivateKey = web3.eth.accounts.encrypt(
+      account.privateKey,
+      this.state.password
+    ).address;
+
     const user = {
       phone: this.state.phone,
       password: this.state.password,
       publickey: account.address,
-      privatekey: account.privateKey,
+      privatekey: encryptedPrivateKey,
     };
 
     axios

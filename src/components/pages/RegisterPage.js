@@ -17,19 +17,21 @@ export default class SignUpPage extends React.Component {
     this.setState({
       phone: event.target.value,
       password: event.target.value,
-      publickey: "fyp",
-      privatekey: "cadmos",
+      publickey: "",
+      privatekey: "",
     });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
 
+    let account = web3.eth.accounts.create();
+
     const user = {
       phone: this.state.phone,
       password: this.state.password,
-      publickey: this.state.publickey,
-      privatekey: this.state.privatekey,
+      publickey: account.address,
+      privatekey: account.privateKey,
     };
 
     axios
@@ -37,6 +39,8 @@ export default class SignUpPage extends React.Component {
       .then((res) => {
         console.log(res);
         console.log(res.data);
+        console.log(account);
+        console.log(user);
       })
       .catch((res) => {
         console.log(res);
@@ -70,7 +74,7 @@ export default class SignUpPage extends React.Component {
             />
           </p>
           <p>
-            <button onClick={createAccount} id="sub_btn" type="submit">
+            <button id="sub_btn" type="submit">
               Register
             </button>
           </p>
@@ -85,7 +89,7 @@ export default class SignUpPage extends React.Component {
   }
 }
 
-function createAccount() {
-  let account = web3.eth.accounts.create();
-  console.log(account);
-}
+// function createAccount() {
+//   account = web3.eth.accounts.create();
+//   console.log(account);
+// }

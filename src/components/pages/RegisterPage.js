@@ -94,8 +94,3 @@ export default class SignUpPage extends React.Component {
     );
   }
 }
-
-// function createAccount() {
-//   account = web3.eth.accounts.create();
-//   console.log(account);
-// }

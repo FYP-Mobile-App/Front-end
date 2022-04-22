@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Redirect } from "react-router";
 
 import "../../App.css";
 
@@ -8,6 +9,7 @@ export default class SignInPage extends React.Component {
   state = {
     phone: "",
     password: "",
+    isSignedUp: false,
   };
 
   handleChange = (event) => {
@@ -15,6 +17,7 @@ export default class SignInPage extends React.Component {
     this.setState({
       ...this.state,
       [event.target.name]: value,
+      isSignedUp: this.state.isSignedUp,
     });
   };
 
@@ -26,14 +29,26 @@ export default class SignInPage extends React.Component {
       password: this.state.password,
     };
 
-    axios.post(`http://localhost:9900/auth/login`, user).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      console.log(user);
-    });
+    axios
+      .post(`http://localhost:9900/auth/login`, user)
+      .then((res) => {
+        // console.log(res);
+        // console.log(res.data);
+        // console.log(user);
+        localStorage.setItem("user", JSON.stringify(res.data));
+        if (res.status === 200) {
+          this.setState({ isSignedUp: true });
+        }
+      })
+      .catch((res) => {
+        console.log(res);
+      });
   };
 
   render() {
+    if (this.state.isSignedUp) {
+      return <Redirect to={{ pathname: "/home" }} />;
+    }
     return (
       <div className="text-center m-5-auto">
         <h2>Sign in</h2>

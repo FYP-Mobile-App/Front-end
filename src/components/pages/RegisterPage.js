@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../App.css";
 let Web3 = require("web3");
-let web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
+let web3 = new Web3(Web3.givenProvider || "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5");
 
 export default class SignUpPage extends React.Component {
   state = {

@@ -9,7 +9,7 @@ export default class SignInPage extends React.Component {
   state = {
     phone: "",
     password: "",
-    isSignedUp: false,
+    isSignedIn: false,
   };
 
   handleChange = (event) => {
@@ -17,7 +17,7 @@ export default class SignInPage extends React.Component {
     this.setState({
       ...this.state,
       [event.target.name]: value,
-      isSignedUp: this.state.isSignedUp,
+      isSignedIn: this.state.isSignedIn,
     });
   };
 
@@ -37,7 +37,7 @@ export default class SignInPage extends React.Component {
         // console.log(user);
         localStorage.setItem("user", JSON.stringify(res.data));
         if (res.status === 200) {
-          this.setState({ isSignedUp: true });
+          this.setState({ isSignedIn: true });
         }
       })
       .catch((res) => {
@@ -46,7 +46,7 @@ export default class SignInPage extends React.Component {
   };
 
   render() {
-    if (this.state.isSignedUp) {
+    if (this.state.isSignedIn) {
       return <Redirect to={{ pathname: "/home" }} />;
     }
     return (

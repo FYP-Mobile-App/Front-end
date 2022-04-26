@@ -44,8 +44,6 @@ export default class SignUpPage extends React.Component {
       privatekey: encryptedKeystore.address,
     };
 
-    localStorage.setItem("user", JSON.stringify(user));
-
     axios
       .post(`http://localhost:9900/auth/signup`, user)
       .then((res) => {

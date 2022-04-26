@@ -29,12 +29,18 @@ export default class SignInPage extends React.Component {
       password: this.state.password,
     };
 
+    localStorage.setItem("user", JSON.stringify(user));
+
     axios
       .post(`http://localhost:9900/auth/login`, user)
       .then((res) => {
         // console.log(res);
         // console.log(res.data);
-        // console.log(user);        
+        // console.log(user);
+        localStorage.setItem(
+          "publicKey",
+          JSON.stringify(res.data.user.publickey)
+        );
         if (res.status === 200) {
           this.setState({ isSignedIn: true });
         }

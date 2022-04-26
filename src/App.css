@@ -17,6 +17,7 @@ body {
 .primary-button {
   margin-top: 5rem;
   margin-right: 1rem;
+  margin-bottom: 3rem;
   padding: 0.6rem;
   width: 6rem;
   background: #222;
@@ -40,7 +41,7 @@ body {
 }
 
 .main-title {
-  padding-top: 6rem;
+  padding-top: 5rem;
   font-size: 5rem;
   font-family: "Fascinate", cursive;
   text-transform: uppercase;
@@ -147,11 +148,11 @@ form span {
   color: #222;
 }
 
-.balance {
+.button {
   margin-top: 5rem;
   margin-right: 1rem;
   padding: 0.6rem;
-  width: 10rem;
+  width: 11rem;
   background: #222;
   border: none;
   color: #fff;

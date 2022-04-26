@@ -6,6 +6,7 @@ import LoginPage from "./components/pages/LoginPage";
 import RegisterPage from "./components/pages/RegisterPage";
 import ForgetPasswordPage from "./components/pages/ForgetPasswordPage";
 import HomePage from "./components/pages/HomePage";
+import SendTransactionPage from "./components/pages/SendTransactionPage";
 
 import "./App.css";
 
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/register" component={RegisterPage} />
           <Route path="/forget-password" component={ForgetPasswordPage} />
           <Route path="/home" component={HomePage} />
+          <Route path="/send-transaction" component={SendTransactionPage} />
         </Switch>
       </div>
     </Router>

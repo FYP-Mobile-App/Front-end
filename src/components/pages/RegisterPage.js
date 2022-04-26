@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../App.css";
 let Web3 = require("web3");
-let web3 = new Web3(Web3.givenProvider || "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5");
+let web3 = new Web3(
+  "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
+);
 
 export default class SignUpPage extends React.Component {
   state = {
@@ -28,25 +30,29 @@ export default class SignUpPage extends React.Component {
 
     let account = web3.eth.accounts.create();
 
-    let encryptedPrivateKey = web3.eth.accounts.encrypt(
+    let encryptedKeystore = web3.eth.accounts.encrypt(
       account.privateKey,
       this.state.password
-    ).address;
+    );
+
+    localStorage.setItem("keystore", JSON.stringify(encryptedKeystore));
 
     const user = {
       phone: this.state.phone,
       password: this.state.password,
       publickey: account.address,
-      privatekey: encryptedPrivateKey,
+      privatekey: encryptedKeystore.address,
     };
+
+    localStorage.setItem("user", JSON.stringify(user));
 
     axios
       .post(`http://localhost:9900/auth/signup`, user)
       .then((res) => {
-        console.log(res);
-        console.log(res.data);
-        console.log(account);
-        console.log(user);
+        // console.log(res);
+        // console.log(res.data);
+        // console.log(account);
+        // console.log(user);
       })
       .catch((res) => {
         console.log(res);
@@ -87,7 +93,7 @@ export default class SignUpPage extends React.Component {
         </form>
         <footer>
           <p>
-            <Link to="/">Back to Homepage</Link>
+            <Link to="/">Back to Landing Page</Link>
           </p>
         </footer>
       </div>

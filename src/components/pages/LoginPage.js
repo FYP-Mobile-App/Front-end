@@ -34,8 +34,7 @@ export default class SignInPage extends React.Component {
       .then((res) => {
         // console.log(res);
         // console.log(res.data);
-        // console.log(user);
-        localStorage.setItem("user", JSON.stringify(res.data));
+        // console.log(user);        
         if (res.status === 200) {
           this.setState({ isSignedIn: true });
         }
@@ -87,7 +86,7 @@ export default class SignInPage extends React.Component {
             First time? <Link to="/register">Create an account</Link>
           </p>
           <p>
-            <Link to="/">Back to Homepage</Link>
+            <Link to="/">Back to Landing Page</Link>
           </p>
         </footer>
       </div>

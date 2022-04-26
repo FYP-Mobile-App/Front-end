@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 let Web3 = require("web3");
-let web3 = new Web3(Web3.givenProvider || "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5");
+let web3 = new Web3(
+  "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
+);
 
 export default function HomePage() {
-  let publicKey = JSON.parse(localStorage.getItem("user")).user.publickey;
+  let publicKey = JSON.parse(localStorage.getItem("user")).publickey;
+  const [show, setShow] = useState(false);
+  let Balance;
   return (
     <div className="text-center">
       <h1 className="main-title home-page-title">welcome to your wallet</h1>
@@ -14,22 +18,31 @@ export default function HomePage() {
         <br />
         {publicKey}
       </div>
-      <button className="balance" onClick={getBalance}>
-        Get Balance
-      </button>
-      <br />
+      <div>
+        <button className="button" onClick={getBalance}>
+          Get Balance
+        </button>
+        {show ? <div>{Balance}</div> : null}
+      </div>
+      <div>
+        <Link to="/send-transaction">
+          <button className="button">Send Transaction</button>
+        </Link>
+      </div>
       <Link to="/">
-        <button className="primary-button" onClickCapture={logout}>Log out</button>
+        <button className="primary-button" onClickCapture={logout}>
+          Log out
+        </button>
       </Link>
     </div>
   );
 
   function getBalance() {
-    let balance = web3.eth.getBalance(publicKey);
-    console.log(balance);
+    setShow(true);
+    web3.eth.getBalance(publicKey).then((balance) => (console.log(balance)));
   }
 
-  function logout () {
-    localStorage.removeItem('user');
-  };
+  function logout() {
+    localStorage.removeItem("user");
+  }
 }

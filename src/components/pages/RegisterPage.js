@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../App.css";
+import { Redirect } from "react-router";
 let Web3 = require("web3");
 let web3 = new Web3(
   "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
@@ -13,6 +14,7 @@ export default class SignUpPage extends React.Component {
     password: "",
     publickey: "",
     privatekey: "",
+    isRegistered: false,
   };
 
   handleChange = (event) => {
@@ -22,6 +24,7 @@ export default class SignUpPage extends React.Component {
       [event.target.name]: value,
       publickey: "",
       privatekey: "",
+      isRegistered: this.state.isRegistered,
     });
   };
 
@@ -51,6 +54,9 @@ export default class SignUpPage extends React.Component {
         // console.log(res.data);
         // console.log(account);
         // console.log(user);
+        if (res.status === 200) {
+          this.setState({ isRegistered: true });
+        }
       })
       .catch((res) => {
         console.log(res);
@@ -58,6 +64,9 @@ export default class SignUpPage extends React.Component {
   };
 
   render() {
+    if (this.state.isRegistered) {
+      return <Redirect to={{ pathname: "/login" }} />;
+    }
     return (
       <div className="text-center m-5-auto">
         <h2>Join us</h2>

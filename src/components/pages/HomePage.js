@@ -1,40 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-let Web3 = require("web3");
-let web3 = new Web3(
-  "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
-);
+import { getAllTokens, getBalance } from "../../services/balanceService";
 
 export default class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       publicKey: JSON.parse(localStorage.getItem("publicKey")),
-      balance: "",
-      ERC20balance: "",
+      balances: [],
+      tokens: [],
     };
   }
 
-  minABI = [
-    {
-      constant: true,
-      inputs: [{ name: "_owner", type: "address" }],
-      name: "balanceOf",
-      outputs: [{ name: "balance", type: "uint256" }],
-      type: "function",
-    },
-    {
-      constant: true,
-      inputs: [],
-      name: "decimals",
-      outputs: [{ name: "", type: "uint8" }],
-      type: "function",
-    },
-  ];
-
-  tokenAddress = "0xd97e23F44c86c6Ee8D63fC2EeD985F6c8DBC6525";
-
-  contract = new web3.eth.Contract(this.minABI, this.tokenAddress);
+  async componentDidMount() {
+    let tokens = await getAllTokens();
+    let balances = await getBalance(this.state.publicKey, tokens);
+    this.setState({ tokens: tokens, balances: balances });
+  }
 
   render() {
     return (
@@ -42,21 +24,18 @@ export default class HomePage extends React.Component {
         <h1 className="main-title home-page-title">welcome to your wallet</h1>
         <br />
         <div>
-          Your public key is:
+          Your public key:
           <br />
           {this.state.publicKey}
         </div>
+        <br />
         <div>
-          <button className="button" onClick={this.getBalance.bind(this)}>
-            Get ETH Balance
-          </button>
-          {this.state.balance}
-        </div>
-        <div>
-          <button className="button" onClick={this.getBalanceERC20.bind(this)}>
-            Get ERC-20 Tokens Balance
-          </button>
-          {this.state.ERC20balance}
+          Your balance:
+          {this.state.balances.map((balance) => (
+            <div key={balance.token.name}>
+              {balance.token.name}: {balance.balance}
+            </div>
+          ))}
         </div>
         <div>
           <Link to="/send-transaction">
@@ -78,21 +57,6 @@ export default class HomePage extends React.Component {
         </Link>
       </div>
     );
-  }
-
-  getBalance() {
-    web3.eth.getBalance(this.state.publicKey).then((balance) => {
-      this.setState({ balance: web3.utils.fromWei(balance) });
-    });
-  }
-
-  getBalanceERC20() {
-    this.contract.methods
-      .balanceOf(this.state.publicKey)
-      .call()
-      .then((balance) =>
-        this.setState({ ERC20balance: web3.utils.fromWei(balance) })
-      );
   }
 
   logout() {

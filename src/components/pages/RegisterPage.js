@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../App.css";
 import { Redirect } from "react-router";
+import {
+  setEncryptedKeystore,
+  setPassword,
+  setPhoneNumber,
+  setPublicKey,
+} from "../../services/userService";
 let Web3 = require("web3");
 let web3 = new Web3(
   "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
@@ -38,22 +44,21 @@ export default class SignUpPage extends React.Component {
       this.state.password
     );
 
-    localStorage.setItem("keystore", JSON.stringify(encryptedKeystore));
-
     const user = {
       phone: this.state.phone,
       password: this.state.password,
       publickey: account.address,
-      privatekey: encryptedKeystore.address,
+      privatekey: JSON.stringify(encryptedKeystore),
     };
+
+    setPhoneNumber(user.phone);
+    setPassword(user.password);
+    setPublicKey(user.publickey);
+    setEncryptedKeystore(encryptedKeystore);
 
     axios
       .post(`http://localhost:9900/auth/signup`, user)
       .then((res) => {
-        // console.log(res);
-        // console.log(res.data);
-        // console.log(account);
-        // console.log(user);
         if (res.status === 200) {
           this.setState({ isRegistered: true });
         }
@@ -65,7 +70,7 @@ export default class SignUpPage extends React.Component {
 
   render() {
     if (this.state.isRegistered) {
-      return <Redirect to={{ pathname: "/login" }} />;
+      return <Redirect to={{ pathname: "/home" }} />;
     }
     return (
       <div className="text-center m-5-auto">

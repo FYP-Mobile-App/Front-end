@@ -7,7 +7,6 @@ import RegisterPage from "./components/pages/RegisterPage";
 import ForgetPasswordPage from "./components/pages/ForgetPasswordPage";
 import HomePage from "./components/pages/HomePage";
 import SendTransactionPage from "./components/pages/SendTransactionPage";
-import SendERC20Tokens from "./components/pages/SendERC20Tokens";
 
 import "./App.css";
 
@@ -22,7 +21,6 @@ export default function App() {
           <Route path="/forget-password" component={ForgetPasswordPage} />
           <Route path="/home" component={HomePage} />
           <Route path="/send-transaction" component={SendTransactionPage} />
-          <Route path="/send-erc20-tokens" component={SendERC20Tokens} />
         </Switch>
       </div>
     </Router>

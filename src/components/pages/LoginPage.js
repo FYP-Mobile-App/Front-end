@@ -4,6 +4,12 @@ import axios from "axios";
 import { Redirect } from "react-router";
 
 import "../../App.css";
+import {
+  setPhoneNumber,
+  setPassword,
+  setPublicKey,
+  setEncryptedKeystore,
+} from "../../services/userService";
 
 export default class SignInPage extends React.Component {
   state = {
@@ -29,18 +35,14 @@ export default class SignInPage extends React.Component {
       password: this.state.password,
     };
 
-    localStorage.setItem("user", JSON.stringify(user));
+    setPhoneNumber(user.phone);
+    setPassword(user.password);
 
     axios
       .post(`http://localhost:9900/auth/login`, user)
       .then((res) => {
-        // console.log(res);
-        // console.log(res.data);
-        // console.log(user);
-        localStorage.setItem(
-          "publicKey",
-          JSON.stringify(res.data.user.publickey)
-        );
+        setPublicKey(res.data.user.publickey);
+        setEncryptedKeystore(JSON.parse(res.data.user.privatekey));
         if (res.status === 200) {
           this.setState({ isSignedIn: true });
         }

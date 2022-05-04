@@ -1,18 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { getReceiversPublicKey, sendETH } from "../../services/sendTransactionService";
+import { sendTransactionByPhoneNumber } from "../../services/sendTransactionService";
+import { getTokenByName } from "../../services/tokensService";
+import {
+  getEncryptedKeystore,
+  getPassword,
+  getPublicKey,
+} from "../../services/userService";
 let Web3 = require("web3");
 let web3 = new Web3(
   "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
 );
 
 export default class SendTransactionPage extends React.Component {
-  keystoreJsonV3 = JSON.parse(localStorage.getItem("keystore"));
-  password = JSON.parse(localStorage.getItem("user")).password;
+  keystoreJsonV3 = getEncryptedKeystore();
+  password = getPassword();
   privateKey = web3.eth.accounts.decrypt(this.keystoreJsonV3, this.password)
     .privateKey;
-  //receiversPublicKey;
+  publicKey = getPublicKey();
 
   state = {
     to: "",
@@ -30,30 +35,18 @@ export default class SendTransactionPage extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    // axios
-    //   .get(`http://localhost:9900/users/address?phone=` + this.state.to)
-    //   .then((res) => {
-    //     this.receiversPublicKey = res.data.address;
-    // web3.eth.accounts
-    //   .signTransaction(
-    //     {
-    //       to: this.receiversPublicKey,
-    //       value: web3.utils.toWei(this.state.amount),
-    //       gas: 53000,
-    //       chainId: 4,
-    //     },
-    //     this.privateKey
-    //   )
-    //   .then((data) => {
-    //     web3.eth.sendSignedTransaction(data.rawTransaction);
-    //     console.log(data);
-    //   });
-    // })
-    // .catch((res) => {
-    //   console.log(res);
-    // });
-    
-    getReceiversPublicKey(this.state.to).then(receiversPublicKey => sendETH(receiversPublicKey, this.privateKey, this.state.amount).then(data => console.log(data)))
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    let tokenName = urlParams.get("token");
+    getTokenByName(tokenName).then((token) => {
+      sendTransactionByPhoneNumber(
+        token,
+        this.state.to,
+        this.publicKey,
+        this.privateKey,
+        this.state.amount
+      );
+    });
   };
 
   render() {

@@ -23,7 +23,7 @@ export default class HomePage extends React.Component {
   render() {
     return (
       <div className="text-center">
-        <h1 className="main-title home-page-title">welcome to your wallet</h1>
+        <h1 className="home-page-title">welcome to your wallet</h1>
         <br />
         <div>
           Your public key:
@@ -38,8 +38,8 @@ export default class HomePage extends React.Component {
               to={"/send-transaction?token=" + balance.token.name}
               key={balance.token.name}
             >
-              <div>
-                <button>
+              <div className="balance">
+                <button className="balanceButtons">
                   {balance.token.name}: {balance.balance}
                 </button>
               </div>

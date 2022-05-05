@@ -41,7 +41,7 @@ body {
 }
 
 .main-title {
-  padding-top: 5rem;
+  padding-top: 7rem;
   font-size: 5rem;
   font-family: "Fascinate", cursive;
   text-transform: uppercase;
@@ -146,6 +146,10 @@ form span {
 /***    Home Page     ***/
 .home-page-title {
   color: #222;
+  padding-top: 2rem;
+  font-size: 5rem;
+  font-family: "Fascinate", cursive;
+  text-transform: uppercase;
 }
 
 .button {
@@ -160,4 +164,14 @@ form span {
   transition: all 0.5s;
   cursor: pointer;
   text-transform: capitalize;
+}
+
+.balance {
+  margin: auto;
+}
+
+.balanceButtons {
+  margin: 10px;
+  width: 300px;
+  background-color: white;
 }

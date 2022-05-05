@@ -79,10 +79,16 @@ export async function sendETH(receiversPublicKey, sendersPrivateKey, amount) {
     },
     sendersPrivateKey
   );
-  let receipt = await web3.eth.sendSignedTransaction(
-    signedTransaction.rawTransaction
+  return web3.eth.sendSignedTransaction(
+    signedTransaction.rawTransaction,
+    (err, res) => {
+      if (err) {
+        alert("Transaction failed");
+      } else {
+        alert("Transaction successful");
+      }
+    }
   );
-  return receipt;
 }
 
 export async function sendERC20Tokens(
@@ -108,10 +114,16 @@ export async function sendERC20Tokens(
     txObj,
     sendersPrivateKey
   );
-  let receipt = await web3.eth.sendSignedTransaction(
-    signedTransaction.rawTransaction
+  return web3.eth.sendSignedTransaction(
+    signedTransaction.rawTransaction,
+    (err, res) => {
+      if (err) {
+        alert("Transaction failed");
+      } else {
+        alert("Transaction successful");
+      }
+    }
   );
-  return receipt;
 }
 
 export async function getReceiversPublicKey(phoneNumber) {

@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import axios from "axios";
 import "../../App.css";
+import { setPhoneNumber } from "../../services/userService";
 
 export default class PhoneNumberPage extends React.Component {
-  state = { phone: "", formSubmitted: false };
+  state = { phone: "", formSubmitted: false,accountexists:false };
 
   handleChange = (event) => {
     const value = event.target.value;
@@ -20,25 +21,17 @@ export default class PhoneNumberPage extends React.Component {
     const phone = {
       phone: this.state.phone,
     };
+    setPhoneNumber(phone)
 
     axios
-      .post(`http://localhost:9900/auth/phoneInUsersTable`, phone)
+      .post(`http://localhost:9900/auth/phone`, phone)
       .then((res) => {
-        if (res.status === 200) {
-          window.location.replace("/login");
+        if (res.status === 403) {
+          this.setState({ accountexists: true });
+          
         } else {
-          axios
-            .post(`http://localhost:9900/auth/phoneInOTPTable`, phone)
-            .then((res) => {
-              if (res.status === 200) {
-                console.log(res.data);
-              } else {
-                console.log(res.data);
-              }
-            })
-            .catch((res) => {
-              console.log(res);
-            });
+          this.setState({ formSubmitted: true });
+          
         }
       })
       .catch((res) => {
@@ -48,6 +41,9 @@ export default class PhoneNumberPage extends React.Component {
   };
 
   render() {
+    if (this.state.accountexists) {
+      return <Redirect to={{ pathname: "/login" }} />;
+    }
     if (this.state.formSubmitted) {
       return <Redirect to={{ pathname: "/otp" }} />;
     }

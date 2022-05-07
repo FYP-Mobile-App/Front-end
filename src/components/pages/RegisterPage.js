@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import "../../App.css";
 import { Redirect } from "react-router";
@@ -74,19 +73,7 @@ export default class SignUpPage extends React.Component {
     }
     return (
       <div className="text-center m-5-auto">
-        <h2>Join us</h2>
-        <h5>Create your personal account</h5>
         <form onSubmit={this.handleSubmit} action="/home">
-          <p>
-            <label>Phone number</label>
-            <br />
-            <input
-              type="text"
-              name="phone"
-              required
-              onChange={this.handleChange}
-            />
-          </p>
           <p>
             <label>Password</label>
             <br />
@@ -103,11 +90,6 @@ export default class SignUpPage extends React.Component {
             </button>
           </p>
         </form>
-        <footer>
-          <p>
-            <Link to="/">Back to Landing Page</Link>
-          </p>
-        </footer>
       </div>
     );
   }

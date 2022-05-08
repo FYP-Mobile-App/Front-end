@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getBalance } from "../../services/balanceService";
 import { getTokens } from "../../services/tokensService";
-import { clear, getPublicKey } from "../../services/userService";
-import phonetransaction from '../../assets/images/phone-transaction.png' 
+import { getPublicKey } from "../../services/userService"; 
 import Navbar from "../nav/Navbar";
 
-export default class HomePage extends React.Component {
+export default class TransactionTypePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

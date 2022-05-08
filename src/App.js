@@ -56,7 +56,7 @@ export default function App() {
             </Switch>
           </div>
         </Router>
-          <input type="checkbox" class="checkbox" id="checkbox" />
+          {/* <input type="checkbox" class="checkbox" id="checkbox" />
           <label for="checkbox" class="label" onClick={e =>
             setTheme(
               theme.mode === 'dark' 
@@ -67,7 +67,7 @@ export default function App() {
             <i class="fas fa-moon"></i>
             <i class='fas fa-sun'></i>
           <div class='ball' />
-          </label>
+          </label> */}
       </>
     </ThemeProvider>
   );

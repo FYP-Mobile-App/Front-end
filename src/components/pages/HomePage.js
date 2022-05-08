@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { getBalance } from "../../services/balanceService";
 import { getTokens } from "../../services/tokensService";
 import { clear, getPublicKey } from "../../services/userService";
+import phonetransaction from '../../assets/images/phone-transaction.png';
+import scanqr from '../../assets/images/scan-qr-code.png';
+import qr from '../../assets/images/qr-code.png';
+import Navbar from "../nav/Navbar";
 
 export default class HomePage extends React.Component {
   constructor(props) {
@@ -23,42 +27,51 @@ export default class HomePage extends React.Component {
   render() {
     return (
       <div className="text-center">
+        <Navbar />
+        <div className="container">
+        <div className="round-btn">
+          <Link className="icon" to="/transaction-type">
+            <img src={phonetransaction} />
+          </Link>
+          <span class="caption small">Pay By PhoneNumber</span>
+          
+        </div>
+        <div className="round-btn">
+          <Link className="icon" to="/transaction-type">
+              <img src={scanqr} />
+            </Link>
+            <span class="caption">Scan to Pay</span>
+        </div>
+        <div className="round-btn">
+          <Link className="icon" to="/transaction-type">
+              <img src={qr} />
+          </Link>
+          <span class="caption">Display QR Code</span>
+        </div>
+        </div>
         <h1 className="home-page-title">welcome to your wallet</h1>
-        <br />
+        {/* <br />
         <div>
           Your public key:
           <br />
           {this.state.publicKey}
-        </div>
+        </div> */}
         <br />
         <div>
-          Your balance:
+        <h3 className="home-page-subtitle">Your balance:</h3>
+          
           {this.state.balances.map((balance) => (
             <Link
               to={"/send-transaction?token=" + balance.token.name}
               key={balance.token.name}
             >
               <div className="balance">
-                <button className="balanceButtons">
-                  {balance.token.name}: {balance.balance}
-                </button>
+                  <strong>{balance.token.name}</strong>: {balance.balance}
               </div>
             </Link>
           ))}
         </div>
-        <Link to="/">
-          <button
-            className="primary-button"
-            onClickCapture={this.logout.bind(this)}
-          >
-            Log out
-          </button>
-        </Link>
       </div>
     );
-  }
-
-  logout() {
-    clear();
   }
 }

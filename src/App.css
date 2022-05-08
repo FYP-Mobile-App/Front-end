@@ -10,6 +10,10 @@ body {
   margin: 0 auto;
 }
 
+a{
+  color: black;
+}
+
 .m-5-auto {
   margin: 5rem auto;
 }
@@ -147,7 +151,14 @@ form span {
 .home-page-title {
   color: #222;
   padding-top: 2rem;
-  font-size: 5rem;
+  font-size: 4rem;
+  font-family: "Fascinate", cursive;
+  text-transform: uppercase;
+}
+
+.home-page-subtitle {
+  color: #222;
+  padding-top: 2rem;
   font-family: "Fascinate", cursive;
   text-transform: uppercase;
 }
@@ -174,4 +185,126 @@ form span {
   margin: 10px;
   width: 300px;
   background-color: white;
+}
+
+.round-btn{
+  margin-top: 6%;
+  background: rgb(45, 45, 95);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  left: 22%;
+  vertical-align: top;
+  /* display: inline-block;
+  text-align: center; */
+}
+
+@media (max-width: 768px) {
+  .round-btn{
+    margin-top: 8%;
+    background: rgb(11, 11, 58);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    left: 5%;
+  }
+}
+
+@media (max-width: 390px) {
+  .round-btn{
+    margin-top: 18%;
+    background: black;
+    width: 115px;
+    height: 115px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* fraction*/
+}
+
+.icon{
+  margin-top: 15%;
+}
+
+.small{
+  font-size: smaller;
+}
+
+.caption{
+  margin-top:-20%;
+  color: white;
+}
+
+/* Dark theme button  */
+* {
+  box-sizing: border-box;
+}
+body {
+  /* display: flex; */
+  justify-content: center;
+  height: 10vh;
+  margin: 0;
+  transition: background 0.2s linear;
+}
+body.dark {
+  background-color: #292c35;
+}
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 50px;
+  height: 26px;
+  background-color:#111;
+  display: flex;
+  border-radius:50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball{
+  transform: translateX(24px);
+}
+
+.fa-moon {
+  color: pink;
+}
+
+.fa-sun {
+  color: yellow;
+}
+
+.active-link{
+  color: mediumblue;
 }

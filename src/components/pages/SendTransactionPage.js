@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Navbar from "../nav/Navbar";
 import { sendTransactionByPhoneNumber } from "../../services/sendTransactionService";
 import { getTokenByName } from "../../services/tokensService";
+import swal from 'sweetalert';
 import {
   getEncryptedKeystore,
   getPassword,
@@ -38,20 +40,34 @@ export default class SendTransactionPage extends React.Component {
     let queryString = window.location.search;
     let urlParams = new URLSearchParams(queryString);
     let tokenName = urlParams.get("token");
-    getTokenByName(tokenName).then((token) => {
-      sendTransactionByPhoneNumber(
-        token,
-        this.state.to,
-        this.publicKey,
-        this.privateKey,
-        this.state.amount
-      );
+    swal({
+      title: "Are you sure?",
+      text: `Are your sure you want to make transaction of ${this.state.amount} ${tokenName} to the number ${this.state.to} `,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        getTokenByName(tokenName).then((token) => {
+          sendTransactionByPhoneNumber(
+            token,
+            this.state.to,
+            this.publicKey,
+            this.privateKey,
+            this.state.amount
+          );
+        });
+      }
     });
+    
   };
 
   render() {
     return (
-      <div className="text-center m-5-auto">
+      <div className="text-center">
+        <Navbar />
+       <div className="text-center m-5-auto"> 
         <h2>Send Transaction</h2>
         <form onSubmit={this.handleSubmit}>
           <p>
@@ -82,10 +98,11 @@ export default class SendTransactionPage extends React.Component {
         </form>
         <footer>
           <p>
-            <Link to="/home">Back to Homepage</Link>
+            <Link to="/transaction-type">Choose Another Transaction Currency</Link>
           </p>
         </footer>
       </div>
+     </div>
     );
   }
 }

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ETH } from "../classes/token";
+import swal from 'sweetalert';
 let Web3 = require("web3");
 let web3 = new Web3(
   "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
@@ -83,9 +84,11 @@ export async function sendETH(receiversPublicKey, sendersPrivateKey, amount) {
     signedTransaction.rawTransaction,
     (err, res) => {
       if (err) {
-        alert("Transaction failed");
+        swal("Error", "Transaction failed", "error");
       } else {
-        alert("Transaction successful");
+        swal("Success!", "Transaction successful!", "success").then(() => {
+          window.location.replace("/home");
+        });
       }
     }
   );
@@ -122,6 +125,7 @@ export async function sendERC20Tokens(
       } else {
         alert("Transaction successful");
       }
+      window.location.replace("/home");
     }
   );
 }

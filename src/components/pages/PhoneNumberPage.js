@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import { setPhoneNumber } from "../../services/userService";
 import "../../App.css";
+import logo from "../../assets/images/cadmos-logo.jpg";
 import { requestOTP } from "../../services/OTPService";
 
 export default class PhoneNumberPage extends React.Component {
@@ -44,6 +45,8 @@ export default class PhoneNumberPage extends React.Component {
       return <Redirect to={{ pathname: "/otp" }} />;
     }
     return (
+    <header style={HeaderStyle}>
+    <img className="logo" src={logo} alt="Logo" />
       <div className="text-center m-5-auto">
         <h2>Join us</h2>
         <h5>Create your personal account</h5>
@@ -70,6 +73,12 @@ export default class PhoneNumberPage extends React.Component {
           </p>
         </footer>
       </div>
+      </header>
     );
   }
 }
+
+const HeaderStyle = {
+  width: "100%",
+  height: "100vh",
+};

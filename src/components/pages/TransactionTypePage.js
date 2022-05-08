@@ -25,16 +25,14 @@ export default class TransactionTypePage extends React.Component {
     return (
       <div className="text-center">
         <Navbar />
-        <div>
+        <div className="container2">
         {this.state.balances.map((balance) => (
             <Link
               to={"/send-transaction?token=" + balance.token.name}
               key={balance.token.name}
             >
-              <div className="balance">
-                <button className="balanceButtons">
+              <div className="round-btn caption2">
                   {balance.token.name} transaction
-                </button>
               </div>
             </Link>
           ))}

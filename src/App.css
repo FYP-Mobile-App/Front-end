@@ -203,18 +203,36 @@ form span {
   text-align: center; */
 }
 
+.round-btn2{
+  margin-top: 15%;
+  background: rgb(45, 45, 95);
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  left: 30%;
+  vertical-align: top;
+  /* display: inline-block;
+  text-align: center; */
+}
+
 @media (max-width: 768px) {
   .round-btn{
     margin-top: 8%;
-    background: rgb(11, 11, 58);
     width: 150px;
     height: 150px;
-    border-radius: 50%;
     display: flex;
-    align-items: center;
-    text-align: center;
-    position: relative;
     left: 5%;
+  }
+
+  .round-btn2{
+    width: 200px;
+    height: 200px;
+    display: flex;
+    left: 25%;
   }
 }
 
@@ -236,6 +254,11 @@ form span {
   grid-template-columns: 1fr 1fr 1fr; /* fraction*/
 }
 
+.container2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* fraction*/
+}
+
 .icon{
   margin-top: 15%;
 }
@@ -246,6 +269,10 @@ form span {
 
 .caption{
   margin-top:-20%;
+  color: white;
+}
+
+.caption2{
   color: white;
 }
 

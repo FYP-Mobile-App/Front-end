@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getBalance } from "../../services/balanceService";
 import { getTokens } from "../../services/tokensService";
-import { clear, getPublicKey } from "../../services/userService";
+import { getPublicKey } from "../../services/userService";
 import phonetransaction from '../../assets/images/phone-transaction.png';
 import scanqr from '../../assets/images/scan-qr-code.png';
 import qr from '../../assets/images/qr-code.png';
@@ -28,6 +28,7 @@ export default class HomePage extends React.Component {
     return (
       <div className="text-center">
         <Navbar />
+        <h1 className="home-page-title">welcome to your wallet</h1>
         <div className="container">
         <div className="round-btn">
           <Link className="icon" to="/transaction-type">
@@ -49,7 +50,6 @@ export default class HomePage extends React.Component {
           <span class="caption">Display QR Code</span>
         </div>
         </div>
-        <h1 className="home-page-title">welcome to your wallet</h1>
         {/* <br />
         <div>
           Your public key:

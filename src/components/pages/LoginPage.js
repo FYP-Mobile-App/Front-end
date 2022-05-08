@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Redirect } from "react-router";
-
+import logo from "../../assets/images/cadmos-logo.jpg";
 import "../../App.css";
 import {
   setPhoneNumber,
@@ -11,7 +11,7 @@ import {
   setEncryptedKeystore,
 } from "../../services/userService";
 
-export default class SignInPage extends React.Component {
+export default class LoginPage extends React.Component {
   state = {
     phone: "",
     password: "",
@@ -57,6 +57,8 @@ export default class SignInPage extends React.Component {
       return <Redirect to={{ pathname: "/home" }} />;
     }
     return (
+    <header style={HeaderStyle}>
+      <img className="logo" src={logo} alt="Logo" />
       <div className="text-center m-5-auto">
         <h2>Sign in</h2>
         <form onSubmit={this.handleSubmit} action="/home">
@@ -91,13 +93,19 @@ export default class SignInPage extends React.Component {
         </form>
         <footer>
           <p>
-            First time? <Link to="/register">Create an account</Link>
+            First time? <Link to="/phone-number">Create an account</Link>
           </p>
           <p>
             <Link to="/">Back to Landing Page</Link>
           </p>
         </footer>
       </div>
+      </header>
     );
   }
 }
+
+const HeaderStyle = {
+  width: "100%",
+  height: "100vh",
+};

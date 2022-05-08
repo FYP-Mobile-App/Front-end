@@ -47,8 +47,8 @@ export default class SignInPage extends React.Component {
           this.setState({ isSignedIn: true });
         }
       })
-      .catch((res) => {
-        console.log(res);
+      .catch((error) => {
+        console.log(error);
       });
   };
 

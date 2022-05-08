@@ -3,9 +3,9 @@ import axios from "axios";
 import "../../App.css";
 import { Redirect } from "react-router";
 import {
+  getPhoneNumber,
   setEncryptedKeystore,
   setPassword,
-  setPhoneNumber,
   setPublicKey,
 } from "../../services/userService";
 let Web3 = require("web3");
@@ -15,10 +15,8 @@ let web3 = new Web3(
 
 export default class SignUpPage extends React.Component {
   state = {
-    phone: "",
     password: "",
-    publickey: "",
-    privatekey: "",
+    confirmPassword: "",
     isRegistered: false,
   };
 
@@ -27,9 +25,6 @@ export default class SignUpPage extends React.Component {
     this.setState({
       ...this.state,
       [event.target.name]: value,
-      publickey: "",
-      privatekey: "",
-      isRegistered: this.state.isRegistered,
     });
   };
 
@@ -44,27 +39,30 @@ export default class SignUpPage extends React.Component {
     );
 
     const user = {
-      phone: this.state.phone,
+      phone: getPhoneNumber(),
       password: this.state.password,
       publickey: account.address,
       privatekey: JSON.stringify(encryptedKeystore),
     };
 
-    setPhoneNumber(user.phone);
     setPassword(user.password);
     setPublicKey(user.publickey);
     setEncryptedKeystore(encryptedKeystore);
 
-    axios
-      .post(`http://localhost:9900/auth/signup`, user)
-      .then((res) => {
-        if (res.status === 200) {
-          this.setState({ isRegistered: true });
-        }
-      })
-      .catch((res) => {
-        console.log(res);
-      });
+    if (this.state.password === this.state.confirmPassword) {
+      axios
+        .post(`http://localhost:9900/auth/signup`, user)
+        .then((res) => {
+          if (res.status === 200) {
+            this.setState({ isRegistered: true });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      alert("Password doesn't match");
+    }
   };
 
   render() {
@@ -80,6 +78,16 @@ export default class SignUpPage extends React.Component {
             <input
               type="password"
               name="password"
+              required
+              onChange={this.handleChange}
+            />
+          </p>
+          <p>
+            <label>Confirm password</label>
+            <br />
+            <input
+              type="password"
+              name="confirmPassword"
               required
               onChange={this.handleChange}
             />

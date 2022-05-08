@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
-import axios from "axios";
-import "../../App.css";
 import { setPhoneNumber } from "../../services/userService";
+import "../../App.css";
+import { requestOTP } from "../../services/OTPService";
 
 export default class PhoneNumberPage extends React.Component {
-  state = { phone: "", formSubmitted: false,accountexists:false };
+  state = {
+    phone: "",
+    accountExists: false,
+    formSubmitted: false,
+  };
 
   handleChange = (event) => {
     const value = event.target.value;
@@ -18,30 +22,22 @@ export default class PhoneNumberPage extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const phone = {
-      phone: this.state.phone,
-    };
-    setPhoneNumber(phone)
+    setPhoneNumber(this.state.phone);
 
-    axios
-      .post(`http://localhost:9900/auth/phone`, phone)
+    requestOTP(this.state.phone)
       .then((res) => {
-        if (res.status === 403) {
-          this.setState({ accountexists: true });
-          
-        } else {
-          this.setState({ formSubmitted: true });
-          
-        }
+        this.setState({ formSubmitted: true });
       })
-      .catch((res) => {
-        console.log(res);
+      .catch((error) => {
+        if (error.response.status === 403) {
+          alert("This phone number is already registered");
+          this.setState({ accountExists: true });
+        }
       });
-    //this.setState({ formSubmitted: true });
   };
 
   render() {
-    if (this.state.accountexists) {
+    if (this.state.accountExists) {
       return <Redirect to={{ pathname: "/login" }} />;
     }
     if (this.state.formSubmitted) {

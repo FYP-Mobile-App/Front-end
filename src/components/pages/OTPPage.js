@@ -1,65 +1,65 @@
 import React from "react";
 import OtpInput from "react-otp-input";
 import axios from "axios";
-import "../../App.css";
 import { getPhoneNumber } from "../../services/userService";
+import { Redirect } from "react-router";
+import "../../App.css";
+import { requestOTP } from "../../services/OTPService";
 
 export default class OTPPage extends React.Component {
   state = {
-    otp: ""
+    OTP: "",
+    formSubmitted: false,
   };
+
+  haventReceived() {
+    requestOTP(getPhoneNumber());
+  }
 
   handleChange = (value) => {
-
     this.setState({
-      otp: value,
+      OTP: value,
     });
   };
+
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const phoneOtp = {
+    const phoneAndOTP = {
       phone: getPhoneNumber(),
-      otp: this.state.otp
+      otp: this.state.OTP,
     };
-    console.log(phoneOtp)
+
     axios
-      .post(`http://localhost:9900/auth/phoneOtp`, phoneOtp)
+      .post(`http://localhost:9900/auth/phoneAndOTP`, phoneAndOTP)
       .then((res) => {
-        if (res.status === 200) {
-          console.log("akal")
-        }
-        else if (res.status === 403){
-            console.log("wrongotp")}
-          else if (res.status === 500) {
-            console.log("akalna khara 3al t2il")
-          }
-
-
-        // if (res.status === 403) {
-        //   window.location.replace("/login");
-        // } else {
-        //   window.location.replace("/otp")
-        // }
+        this.setState({ formSubmitted: true });
       })
-      .catch((res) => {
-        console.log(res);
+      .catch((error) => {
+        if (error.response.status === 401) {
+          alert("Wrong OTP");
+        }
       });
-  }
-
+  };
 
   render() {
+    if (this.state.formSubmitted) {
+      return <Redirect to={{ pathname: "/register" }} />;
+    }
     return (
       <div className="text-center m-5-auto">
         <form onSubmit={this.handleSubmit} action="/home">
           <label>OTP</label>
           <br />
           <OtpInput
-            value={this.state.otp}
+            value={this.state.OTP}
             onChange={this.handleChange}
             numInputs={4}
             separator={<span>-</span>}
           />
+          <button onClick={this.haventReceived} type="button">
+            Haven't received an OTP
+          </button>
           <button id="sub_btn" type="submit">
             Send OTP
           </button>

@@ -33,6 +33,7 @@ a {
   text-transform: capitalize;
 }
 
+/***    Landing Page     ***/
 .logo {
   display: block;
   margin: auto;
@@ -218,7 +219,53 @@ form span {
   text-align: center; */
 }
 
+@media (min-width: 768px) {
+
+  .round-btn2{
+    margin-top: 15%;
+    background: rgb(45, 45, 95);
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    left: 30%;
+    vertical-align: top;
+    /* display: inline-block;
+    text-align: center; */
+  }
+
+  .container2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* fraction*/
+  }
+
+  .caption{
+    margin-top:-20%;
+    color: white;
+  }
+
+  .small{
+    font-size: initial;
+    margin-top:-20%;
+    color: white;
+  }
+}
+
 @media (max-width: 768px) {
+
+  .caption2{
+    color: white;
+    padding-left: 17%;
+  }
+
+  .container2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* fraction*/
+  }
+
   .round-btn {
     margin-top: 8%;
     width: 150px;
@@ -228,50 +275,123 @@ form span {
   }
 
   .round-btn2 {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     display: flex;
-    left: 25%;
+    left: 10%;
+    margin-top: 15%;
+    background: rgb(45, 45, 95);
+    border-radius: 50%;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    vertical-align: top;
+    /* display: inline-block;
+    text-align: center; */
+  }
+
+  .icon{
+    margin-left: 45px;
+    margin-bottom: 20px;
+    vertical-align: middle;
+    border-style: none;
+  }
+
+  .small{
+    font-size: initial;
+    margin-right: 20px;
+    color: rgb(45, 45, 95);
+    margin-bottom: -240px;
+    position:absolute;
+  }
+
+  .caption{
+    color: rgb(45, 45, 95);
+    margin-bottom: -240px;
+    position:absolute;
+    margin-left: 25px;
   }
 }
 
-@media (max-width: 390px) {
+@media (max-width: 550px) {
+
+  .caption2{
+    text-align: center;
+    padding-left: 25%;
+  }
+
+  .round-btn2{
+    width: 80%;
+    height: 110px;
+    display: flex;
+    left: 25%;
+    margin-left: -60px;
+    background: rgb(45, 45, 95);
+    border-radius: 5%;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    vertical-align: top;
+    /* display: inline-block;
+    text-align: center; */
+  }
+
   .round-btn {
     margin-top: 18%;
-    background: black;
-    width: 115px;
-    height: 115px;
+    background: rgb(45, 45, 95);
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     text-align: center;
   }
+
+  .container2 {
+    margin-top: 25%;
+    display:block
+  }
+
+  .container{
+    margin-top: 20px;
+  }
+
+  .small{
+    font-size: initial;
+    margin-right: 20px;
+    color: rgb(45, 45, 95);
+    margin-bottom: -186px;
+    position:absolute;
+  }
+
+  .caption{
+    color: rgb(45, 45, 95);
+    margin-bottom: -186px;
+    position:absolute;
+    margin-left: 15px;
+  }
+
+  .icon{
+    margin-left: 6.5mm;
+    vertical-align: middle;
+    border-style: none;
+  }
+
+  .home-page-title{
+    display:none;
+  }
 }
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /*fraction*/
+  grid-template-columns: 1fr 1fr 1fr; /* fraction*/
 }
 
-.container2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /*fraction*/
-}
-
-.icon {
+.icon{
   margin-top: 15%;
 }
 
-.small {
-  font-size: smaller;
-}
-
-.caption {
-  margin-top: -20%;
-  color: white;
-}
-
-.caption2 {
+.caption2{
   color: white;
 }
 
@@ -318,7 +438,7 @@ body.dark {
   transition: transform 0.2s linear;
 }
 
-/*target the element after the label*/
+/*target the elemenent after the label*/
 .checkbox:checked + .label .ball {
   transform: translateX(24px);
 }
@@ -351,10 +471,10 @@ body.dark {
 
 /* country code */
 
-@import url("https://fonts.googleapis.com/css2?family=Lato&family=Roboto&family=Source+Code+Pro&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto&family=Source+Code+Pro&display=swap');
 
 * {
-  margin: 0;
+  margin:0;
   padding: 0;
 }
 /* .page{
@@ -374,7 +494,7 @@ body.dark {
 .heading {
   text-align: center;
   margin-top: 1rem;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 .tel-box {
   display: flex;
@@ -391,7 +511,7 @@ body.dark {
   border-radius: 5px;
 }
 .select-box select {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   width: 85px;
   height: 40px;
   background: none;
@@ -405,7 +525,7 @@ body.dark {
 }
 
 .tel {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   width: 100%;
   height: 40px;
   background: none;
@@ -423,11 +543,11 @@ body.dark {
   font-size: 1rem;
   font-weight: bold;
   display: flex;
-  align-self: center;
+  align-self:center;
 }
 .result {
-  font-family: "Source Code Pro", monospace;
-  width: auto;
+  font-family: 'Source Code Pro', monospace;
+  width:auto;
   padding: 0.25rem;
   border-radius: 5px;
   height: 30px;

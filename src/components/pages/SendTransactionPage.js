@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../nav/Navbar";
 import { sendTransactionByPhoneNumber } from "../../services/sendTransactionService";
 import { getTokenByName } from "../../services/tokensService";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import {
   getEncryptedKeystore,
   getPassword,
@@ -40,14 +40,14 @@ export default class SendTransactionPage extends React.Component {
     let queryString = window.location.search;
     let urlParams = new URLSearchParams(queryString);
     let tokenName = urlParams.get("token");
+
     swal({
       title: "Are you sure?",
-      text: `Are your sure you want to make transaction of ${this.state.amount} ${tokenName} to the number ${this.state.to} `,
+      text: `Are you sure you want to send a transaction of ${this.state.amount} ${tokenName} to the number ${this.state.to}?`,
       icon: "warning",
       buttons: true,
       dangerMode: true,
-    })
-    .then((willDelete) => {
+    }).then((willDelete) => {
       if (willDelete) {
         getTokenByName(tokenName).then((token) => {
           sendTransactionByPhoneNumber(
@@ -60,49 +60,50 @@ export default class SendTransactionPage extends React.Component {
         });
       }
     });
-    
   };
 
   render() {
     return (
       <div className="text-center">
         <Navbar />
-       <div className="text-center m-5-auto"> 
-        <h2>Send Transaction</h2>
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <label>To</label>
-            <br />
-            <input
-              type="text"
-              name="to"
-              required
-              onChange={this.handleChange}
-            />
-          </p>
-          <p>
-            <label>Amount</label>
-            <br />
-            <input
-              type="text"
-              name="amount"
-              required
-              onChange={this.handleChange}
-            />
-          </p>
-          <p>
-            <button id="sub_btn" type="submit">
-              Send
-            </button>
-          </p>
-        </form>
-        <footer>
-          <p>
-            <Link to="/transaction-type">Choose Another Transaction Currency</Link>
-          </p>
-        </footer>
+        <div className="text-center m-5-auto">
+          <h2>Send Transaction</h2>
+          <form onSubmit={this.handleSubmit}>
+            <p>
+              <label>To</label>
+              <br />
+              <input
+                type="text"
+                name="to"
+                required
+                onChange={this.handleChange}
+              />
+            </p>
+            <p>
+              <label>Amount</label>
+              <br />
+              <input
+                type="text"
+                name="amount"
+                required
+                onChange={this.handleChange}
+              />
+            </p>
+            <p>
+              <button id="sub_btn" type="submit">
+                Send
+              </button>
+            </p>
+          </form>
+          <footer>
+            <p>
+              <Link to="/transaction-type">
+                Choose Another Transaction Currency
+              </Link>
+            </p>
+          </footer>
+        </div>
       </div>
-     </div>
     );
   }
 }

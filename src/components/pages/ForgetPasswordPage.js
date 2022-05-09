@@ -9,7 +9,7 @@ export default function ForgetPasswordPage() {
       <h2>Reset your password</h2>
       <br />
       <h5>Enter your email address and we will send you a new password</h5>
-      <form action="/login">
+      <form action="/">
         <p>
           <label id="reset_pass_lbl">Email address</label>
           <br />
@@ -23,7 +23,7 @@ export default function ForgetPasswordPage() {
       </form>
       <footer>
         <p>
-          <Link to="/">Back to Landing Page</Link>
+          <Link to="/">Back to Login Page</Link>
         </p>
       </footer>
     </div>

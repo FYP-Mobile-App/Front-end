@@ -8,6 +8,7 @@ import {
   setPassword,
   setPublicKey,
 } from "../../services/userService";
+import swal from "sweetalert";
 let Web3 = require("web3");
 let web3 = new Web3(
   "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
@@ -61,7 +62,7 @@ export default class SignUpPage extends React.Component {
           console.log(error);
         });
     } else {
-      alert("Password doesn't match");
+      swal("Error", "Passwords don't match", "error");
     }
   };
 

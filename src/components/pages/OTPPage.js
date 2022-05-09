@@ -7,6 +7,7 @@ import { Redirect } from "react-router";
 import logo from "../../assets/images/cadmos-logo.jpg";
 import "../../App.css";
 import { requestOTP } from "../../services/OTPService";
+import swal from "sweetalert";
 
 export default class OTPPage extends React.Component {
   state = {
@@ -39,7 +40,7 @@ export default class OTPPage extends React.Component {
       })
       .catch((error) => {
         if (error.response.status === 401) {
-          alert("Wrong OTP");
+          swal("Error", "Wrong OTP", "error");
         }
       });
   };
@@ -50,37 +51,41 @@ export default class OTPPage extends React.Component {
     }
     return (
       <header style={HeaderStyle}>
-      <img className="logo" src={logo} alt="Logo" />
-      <div className="text-center m-5-auto">
-        <form onSubmit={this.handleSubmit} action="/home">
-          <label>One Time Password</label>
-          <br />
-          <div style={{margin: "20px"}}>
-          <OtpInput className="otp-style"
-            value={this.state.OTP}
-            onChange={this.handleChange}
-            numInputs={4}
-            separator={<span>  </span>}
-          />
-          </div>
-          <button id="sub_btn" type="submit">
-            Submit OTP
-          </button>
-        </form>
-        <footer>
-        <button onClick={this.haventReceived} className="otp-btn" type="button">
-            Haven't received an OTP
-          </button>
-          <p>
-            <Link to="/login">Back to Login Page</Link>
-          </p>
-        </footer>
-      </div>
+        <img className="logo" src={logo} alt="Logo" />
+        <div className="text-center m-5-auto">
+          <form onSubmit={this.handleSubmit} action="/home">
+            <label>One Time Password</label>
+            <br />
+            <div style={{ margin: "20px" }}>
+              <OtpInput
+                className="otp-style"
+                value={this.state.OTP}
+                onChange={this.handleChange}
+                numInputs={4}
+                separator={<span> </span>}
+              />
+            </div>
+            <button id="sub_btn" type="submit">
+              Submit OTP
+            </button>
+          </form>
+          <footer>
+            <button
+              onClick={this.haventReceived}
+              className="otp-btn"
+              type="button"
+            >
+              OTP not received?
+            </button>
+            <p>
+              <Link to="/">Back to Login Page</Link>
+            </p>
+          </footer>
+        </div>
       </header>
     );
   }
 }
-
 
 const HeaderStyle = {
   width: "100%",

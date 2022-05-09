@@ -10,7 +10,7 @@ body {
   margin: 0 auto;
 }
 
-a{
+a {
   color: black;
 }
 
@@ -33,7 +33,6 @@ a{
   text-transform: capitalize;
 }
 
-/***    Landing Page     ***/
 .logo {
   display: block;
   margin: auto;
@@ -187,7 +186,7 @@ form span {
   background-color: white;
 }
 
-.round-btn{
+.round-btn {
   margin-top: 6%;
   background: rgb(45, 45, 95);
   width: 200px;
@@ -203,7 +202,7 @@ form span {
   text-align: center; */
 }
 
-.round-btn2{
+.round-btn2 {
   margin-top: 15%;
   background: rgb(45, 45, 95);
   width: 250px;
@@ -220,7 +219,7 @@ form span {
 }
 
 @media (max-width: 768px) {
-  .round-btn{
+  .round-btn {
     margin-top: 8%;
     width: 150px;
     height: 150px;
@@ -228,7 +227,7 @@ form span {
     left: 5%;
   }
 
-  .round-btn2{
+  .round-btn2 {
     width: 200px;
     height: 200px;
     display: flex;
@@ -237,7 +236,7 @@ form span {
 }
 
 @media (max-width: 390px) {
-  .round-btn{
+  .round-btn {
     margin-top: 18%;
     background: black;
     width: 115px;
@@ -251,28 +250,28 @@ form span {
 
 .container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; /* fraction*/
+  grid-template-columns: 1fr 1fr 1fr; /*fraction*/
 }
 
 .container2 {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* fraction*/
+  grid-template-columns: 1fr 1fr; /*fraction*/
 }
 
-.icon{
+.icon {
   margin-top: 15%;
 }
 
-.small{
+.small {
   font-size: smaller;
 }
 
-.caption{
-  margin-top:-20%;
+.caption {
+  margin-top: -20%;
   color: white;
 }
 
-.caption2{
+.caption2 {
   color: white;
 }
 
@@ -298,9 +297,9 @@ body.dark {
 .label {
   width: 50px;
   height: 26px;
-  background-color:#111;
+  background-color: #111;
   display: flex;
-  border-radius:50px;
+  border-radius: 50px;
   align-items: center;
   justify-content: space-between;
   padding: 5px;
@@ -319,8 +318,8 @@ body.dark {
   transition: transform 0.2s linear;
 }
 
-/*  target the elemenent after the label*/
-.checkbox:checked + .label .ball{
+/*target the element after the label*/
+.checkbox:checked + .label .ball {
   transform: translateX(24px);
 }
 
@@ -332,7 +331,7 @@ body.dark {
   color: yellow;
 }
 
-.active-link{
+.active-link {
   color: mediumblue;
 }
 
@@ -341,7 +340,7 @@ body.dark {
   margin: 10px;
 }
 
-.otp-btn{
+.otp-btn {
   border: none;
 }
 
@@ -352,10 +351,10 @@ body.dark {
 
 /* country code */
 
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto&family=Source+Code+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Roboto&family=Source+Code+Pro&display=swap");
 
-*{
-  margin:0;
+* {
+  margin: 0;
   padding: 0;
 }
 /* .page{
@@ -372,27 +371,27 @@ body.dark {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
 } */
-.heading{
+.heading {
   text-align: center;
   margin-top: 1rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-.tel-box{
+.tel-box {
   display: flex;
 }
-.select-box{
+.select-box {
   margin: 1rem;
   width: 60px;
   height: 40px;
 }
-.flag-img{
+.flag-img {
   width: 60px;
   height: 40px;
   position: absolute;
   border-radius: 5px;
 }
-.select-box select{
-  font-family: 'Lato', sans-serif;
+.select-box select {
+  font-family: "Lato", sans-serif;
   width: 85px;
   height: 40px;
   background: none;
@@ -405,8 +404,8 @@ body.dark {
   border-radius: 5px;
 }
 
-.tel{
-  font-family: 'Lato', sans-serif;
+.tel {
+  font-family: "Lato", sans-serif;
   width: 100%;
   height: 40px;
   background: none;
@@ -418,17 +417,17 @@ body.dark {
   font-weight: thick;
   border-radius: 5px;
 }
-.output{
+.output {
   margin: 1rem;
   margin-top: 0;
   font-size: 1rem;
   font-weight: bold;
   display: flex;
-  align-self:center;
+  align-self: center;
 }
-.result{
-  font-family: 'Source Code Pro', monospace;
-  width:auto;
+.result {
+  font-family: "Source Code Pro", monospace;
+  width: auto;
   padding: 0.25rem;
   border-radius: 5px;
   height: 30px;
@@ -436,10 +435,9 @@ body.dark {
   color: red;
   font-size: 1.5rem;
   margin-left: 1rem;
-
 }
 
-.password-input{
+.password-input {
   width: 100%;
   height: 40px;
   border-radius: 5px;

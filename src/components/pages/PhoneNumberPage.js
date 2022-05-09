@@ -69,7 +69,7 @@ export default class PhoneNumberPage extends React.Component {
         </form>
         <footer>
           <p>
-            <Link to="/">Back to Landing Page</Link>
+            <Link to="/login">Back to Login Page</Link>
           </p>
         </footer>
       </div>

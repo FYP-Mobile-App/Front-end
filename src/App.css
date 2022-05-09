@@ -335,3 +335,17 @@ body.dark {
 .active-link{
   color: mediumblue;
 }
+
+.otp-style {
+  font-size: 30pt;
+  margin: 10px;
+}
+
+.otp-btn{
+  border: none;
+}
+
+.otp-btn:hover {
+  text-decoration: underline;
+  color: blue;
+}

@@ -9,8 +9,9 @@ import ForgetPasswordPage from "./components/pages/ForgetPasswordPage";
 import HomePage from "./components/pages/HomePage";
 import SendTransactionPage from "./components/pages/SendTransactionPage";
 import TransactionTypePage from "./components/pages/TransactionTypePage";
+import QRCodePage from "./components/pages/QRCodePage";
+import ScanToPayPage from "./components/pages/ScanToPayPage";
 import storage from "local-storage-fallback";
-
 import "./App.css";
 
 const GlobalStyle = createGlobalStyle`
@@ -50,6 +51,8 @@ export default function App() {
               <Route path="/home" component={HomePage} />
               <Route path="/send-transaction" component={SendTransactionPage} />
               <Route path="/transaction-type" component={TransactionTypePage} />
+              <Route path="/qr-code" component={QRCodePage} />
+              <Route path="/scan-to-pay" component={ScanToPayPage} />
             </Switch>
           </div>
         </Router>

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getBalance } from "../../services/balanceService";
 import { getTokens } from "../../services/tokensService";
-import { getPublicKey } from "../../services/userService"; 
+import { getPublicKey } from "../../services/userService";
 import Navbar from "../nav/Navbar";
 
 export default class TransactionTypePage extends React.Component {
@@ -26,17 +26,17 @@ export default class TransactionTypePage extends React.Component {
       <div className="text-center">
         <Navbar />
         <div className="container2">
-        {this.state.balances.map((balance) => (
+          {this.state.balances.map((balance) => (
             <Link
               to={"/send-transaction?token=" + balance.token.name}
               key={balance.token.name}
             >
               <div className="round-btn2 caption2">
-                  {balance.token.name} transaction
+                {balance.token.name} transaction
               </div>
             </Link>
           ))}
-        </div> 
+        </div>
       </div>
     );
   }

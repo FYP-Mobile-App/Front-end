@@ -220,8 +220,7 @@ form span {
 }
 
 @media (min-width: 768px) {
-
-  .round-btn2{
+  .round-btn2 {
     margin-top: 15%;
     background: rgb(45, 45, 95);
     width: 250px;
@@ -242,21 +241,20 @@ form span {
     grid-template-columns: 1fr 1fr; /* fraction*/
   }
 
-  .caption{
-    margin-top:-20%;
+  .caption {
+    margin-top: -20%;
     color: white;
   }
 
-  .small{
+  .small {
     font-size: initial;
-    margin-top:-20%;
+    margin-top: -20%;
     color: white;
   }
 }
 
 @media (max-width: 768px) {
-
-  .caption2{
+  .caption2 {
     color: white;
     padding-left: 17%;
   }
@@ -290,37 +288,36 @@ form span {
     text-align: center; */
   }
 
-  .icon{
+  .icon {
     margin-left: 45px;
     margin-bottom: 20px;
     vertical-align: middle;
     border-style: none;
   }
 
-  .small{
+  .small {
     font-size: initial;
     margin-right: 20px;
     color: rgb(45, 45, 95);
     margin-bottom: -240px;
-    position:absolute;
+    position: absolute;
   }
 
-  .caption{
+  .caption {
     color: rgb(45, 45, 95);
     margin-bottom: -240px;
-    position:absolute;
+    position: absolute;
     margin-left: 25px;
   }
 }
 
 @media (max-width: 550px) {
-
-  .caption2{
+  .caption2 {
     text-align: center;
     padding-left: 25%;
   }
 
-  .round-btn2{
+  .round-btn2 {
     width: 80%;
     height: 110px;
     display: flex;
@@ -349,36 +346,36 @@ form span {
 
   .container2 {
     margin-top: 25%;
-    display:block
+    display: block;
   }
 
-  .container{
+  .container {
     margin-top: 20px;
   }
 
-  .small{
+  .small {
     font-size: initial;
     margin-right: 20px;
     color: rgb(45, 45, 95);
     margin-bottom: -186px;
-    position:absolute;
+    position: absolute;
   }
 
-  .caption{
+  .caption {
     color: rgb(45, 45, 95);
     margin-bottom: -186px;
-    position:absolute;
+    position: absolute;
     margin-left: 15px;
   }
 
-  .icon{
+  .icon {
     margin-left: 6.5mm;
     vertical-align: middle;
     border-style: none;
   }
 
-  .home-page-title{
-    display:none;
+  .home-page-title {
+    display: none;
   }
 }
 
@@ -387,11 +384,11 @@ form span {
   grid-template-columns: 1fr 1fr 1fr; /* fraction*/
 }
 
-.icon{
+.icon {
   margin-top: 15%;
 }
 
-.caption2{
+.caption2 {
   color: white;
 }
 
@@ -399,6 +396,7 @@ form span {
 * {
   box-sizing: border-box;
 }
+
 body {
   /* display: flex; */
   justify-content: center;
@@ -406,9 +404,11 @@ body {
   margin: 0;
   transition: background 0.2s linear;
 }
+
 body.dark {
   background-color: #292c35;
 }
+
 .checkbox {
   opacity: 0;
   position: absolute;
@@ -471,12 +471,13 @@ body.dark {
 
 /* country code */
 
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto&family=Source+Code+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Roboto&family=Source+Code+Pro&display=swap");
 
 * {
-  margin:0;
+  margin: 0;
   padding: 0;
 }
+
 /* .page{
   height:100vh;
   background-size: cover;
@@ -491,27 +492,32 @@ body.dark {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
 } */
+
 .heading {
   text-align: center;
   margin-top: 1rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
+
 .tel-box {
   display: flex;
 }
+
 .select-box {
   margin: 1rem;
   width: 60px;
   height: 40px;
 }
+
 .flag-img {
   width: 60px;
   height: 40px;
   position: absolute;
   border-radius: 5px;
 }
+
 .select-box select {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   width: 85px;
   height: 40px;
   background: none;
@@ -525,7 +531,7 @@ body.dark {
 }
 
 .tel {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   width: 100%;
   height: 40px;
   background: none;
@@ -537,17 +543,19 @@ body.dark {
   font-weight: thick;
   border-radius: 5px;
 }
+
 .output {
   margin: 1rem;
   margin-top: 0;
   font-size: 1rem;
   font-weight: bold;
   display: flex;
-  align-self:center;
+  align-self: center;
 }
+
 .result {
-  font-family: 'Source Code Pro', monospace;
-  width:auto;
+  font-family: "Source Code Pro", monospace;
+  width: auto;
   padding: 0.25rem;
   border-radius: 5px;
   height: 30px;
@@ -561,4 +569,9 @@ body.dark {
   width: 100%;
   height: 40px;
   border-radius: 5px;
+}
+
+.qr-code {
+  text-align: center;
+  margin: 150px;
 }

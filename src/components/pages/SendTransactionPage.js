@@ -2,13 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../nav/Navbar";
 import { sendTransactionByPhoneNumber } from "../../services/sendTransactionService";
-import { getTokenByName } from "../../services/tokensService";
+import { getTokenByName, getTokens } from "../../services/tokensService";
 import swal from "sweetalert";
 import {
   getEncryptedKeystore,
   getPassword,
   getPublicKey,
 } from "../../services/userService";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 let Web3 = require("web3");
 let web3 = new Web3(
   "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
@@ -23,33 +25,52 @@ export default class SendTransactionPage extends React.Component {
 
   state = {
     to: "",
+    currencies: [],
+    currency: "",
     amount: "",
   };
 
-  handleChange = (event) => {
-    const value = event.target.value;
-    this.setState({
-      ...this.state,
-      [event.target.name]: value,
+  queryString = window.location.search;
+  urlParams = new URLSearchParams(this.queryString);
+
+  componentDidMount() {
+    getTokens().then((tokens) => {
+      this.setState({ currencies: Object.keys(tokens) });
+      let tokenName = this.urlParams.get("token");
+      if (tokenName && this.state.currencies.includes(tokenName)) {
+        this.setState({ currency: tokenName });
+      }
     });
+    let receiversPhoneNumber = this.urlParams.get("phone");
+    if (receiversPhoneNumber) {
+      this.setState({ to: receiversPhoneNumber });
+    }
+  }
+
+  onPhoneNumberChange = (event) => {
+    this.setState({ to: event.target.value });
+  };
+
+  onSelectCurrency = (event) => {
+    this.setState({ currency: event.value });
+  };
+
+  onAmountChange = (event) => {
+    this.setState({ amount: event.target.value });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
 
-    let queryString = window.location.search;
-    let urlParams = new URLSearchParams(queryString);
-    let tokenName = urlParams.get("token");
-
     swal({
       title: "Are you sure?",
-      text: `Are you sure you want to send a transaction of ${this.state.amount} ${tokenName} to the number ${this.state.to}?`,
+      text: `Are you sure you want to send a transaction of ${this.state.amount} ${this.state.currency} to the number ${this.state.to}?`,
       icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        getTokenByName(tokenName).then((token) => {
+        getTokenByName(this.state.currency).then((token) => {
           sendTransactionByPhoneNumber(
             token,
             this.state.to,
@@ -76,7 +97,18 @@ export default class SendTransactionPage extends React.Component {
                 type="text"
                 name="to"
                 required
-                onChange={this.handleChange}
+                onChange={this.onPhoneNumberChange}
+                value={this.state.to}
+              />
+            </p>
+            <p>
+              <label>Currency</label>
+              <br />
+              <Dropdown
+                options={this.state.currencies}
+                onChange={this.onSelectCurrency}
+                value={this.state.currency}
+                placeholder="Select a currency"
               />
             </p>
             <p>
@@ -86,7 +118,7 @@ export default class SendTransactionPage extends React.Component {
                 type="text"
                 name="amount"
                 required
-                onChange={this.handleChange}
+                onChange={this.onAmountChange}
               />
             </p>
             <p>

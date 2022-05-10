@@ -35,20 +35,20 @@ export default class HomePage extends React.Component {
           <Link className="icon" to="/transaction-type">
             <img src={phonetransaction} />
           </Link>
-          <span class="small">Pay By PhoneNumber</span>
+          <span className="small">Pay By PhoneNumber</span>
           
         </div>
         <div className="round-btn">
           <Link className="icon" to="/transaction-type">
               <img src={scanqr} />
             </Link>
-            <span class="caption">Scan to Pay</span>
+            <span className="caption">Scan to Pay</span>
         </div>
         <div className="round-btn">
           <Link className="icon" to="/transaction-type">
               <img src={qr} />
           </Link>
-          <span class="caption">Display QR Code</span>
+          <span className="caption">Display QR Code</span>
         </div>
         </div>
         <br />

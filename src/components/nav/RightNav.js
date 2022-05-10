@@ -41,11 +41,11 @@ const RightNav = ({open}) => {
           <NavLink exact to="/home" activeClassName='active-link'>
             Home
         </NavLink></li>
-        <li>Settings</li>
+        {/* <li>Settings</li> */}
         <li>About Us</li>
         <li>Contact Us</li>
         <li>
-          <NavLink exact to="/login">
+          <NavLink exact to="/">
             Log out
         </NavLink>
         </li>

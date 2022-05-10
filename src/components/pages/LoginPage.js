@@ -85,7 +85,6 @@ export default class LoginPage extends React.Component {
         <div className="text-center m-5-auto">
           <h2>Sign in</h2>
           <form onSubmit={this.handleSubmit} action="/home">
-            <p>
               <label className="heading">Phone Number</label>
               <br />
               <br />
@@ -849,7 +848,6 @@ export default class LoginPage extends React.Component {
               required
               onChange={this.handleChange}
             /> */}
-            </p>
             <p>
               <label>Password</label>
               {/* <Link to="/forget-password">

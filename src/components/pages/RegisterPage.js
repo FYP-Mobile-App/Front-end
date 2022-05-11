@@ -84,7 +84,7 @@ export default class SignUpPage extends React.Component {
             />
           </p>
           <p>
-            <label>Confirm password</label>
+            <label>Confirm Password</label>
             <br />
             <input
               type="password"

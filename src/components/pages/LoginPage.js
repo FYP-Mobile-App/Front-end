@@ -39,13 +39,8 @@ export default class LoginPage extends React.Component {
     });
   };
 
-  handleChange = (event) => {
-    const value = event.target.value;
-    this.setState({
-      ...this.state,
-      [event.target.name]: value,
-      isSignedIn: this.state.isSignedIn,
-    });
+  onPasswordChange = (event) => {
+    this.setState({ password: event.target.value });
   };
 
   handleSubmit = (event) => {
@@ -830,7 +825,6 @@ export default class LoginPage extends React.Component {
                   </option>
                 </select>
               </div>
-              {/* <label>Phone no:</label> */}
               <br />
               <input
                 type="tel"
@@ -840,14 +834,6 @@ export default class LoginPage extends React.Component {
                 defaultValue={this.state.phone}
               />
             </div>
-            {/* <label>Phone number</label>
-            <br />
-            <input
-              type="text"
-              name="phone"
-              required
-              onChange={this.handleChange}
-            /> */}
             <p>
               <label>Password</label>
               {/* <Link to="/forget-password">
@@ -858,7 +844,7 @@ export default class LoginPage extends React.Component {
                 type="password"
                 name="password"
                 required
-                onChange={this.handleChange}
+                onChange={this.onPasswordChange}
                 className="password-input"
               />
             </p>

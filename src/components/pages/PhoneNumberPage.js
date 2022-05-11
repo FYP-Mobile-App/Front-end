@@ -34,13 +34,6 @@ export default class PhoneNumberPage extends React.Component {
     });
   };
 
-  handleChange = (event) => {
-    const value = event.target.value;
-    this.setState({
-      phone: value,
-    });
-  };
-
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -819,7 +812,6 @@ export default class PhoneNumberPage extends React.Component {
                     </option>
                   </select>
                 </div>
-                {/* <label>Phone no:</label> */}
                 <br />
                 <input
                   type="tel"
@@ -829,14 +821,6 @@ export default class PhoneNumberPage extends React.Component {
                   defaultValue={this.state.phone}
                 />
               </div>
-              {/* <label>Phone number</label>
-            <br />
-            <input
-              type="text"
-              name="phone"
-              required
-              onChange={this.handleChange}
-            /> */}
             </p>
             <p>
               <button id="sub_btn" type="submit">

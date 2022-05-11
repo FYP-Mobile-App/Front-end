@@ -133,7 +133,8 @@ export async function sendERC20Tokens(
 
 export async function getReceiversPublicKey(phoneNumber) {
   let res = await axios.get(
-    `http://localhost:9900/users/address?phone=` + phoneNumber
+    `http://localhost:9900/users/address?phone=` +
+      encodeURIComponent(phoneNumber)
   );
   let receiversPublicKey = res.data.address;
   return receiversPublicKey;

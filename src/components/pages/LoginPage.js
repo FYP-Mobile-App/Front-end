@@ -836,9 +836,6 @@ export default class LoginPage extends React.Component {
             </div>
             <p>
               <label>Password</label>
-              {/* <Link to="/forget-password">
-              <label className="right-label">Forget password?</label>
-            </Link> */}
               <br />
               <input
                 type="password"
@@ -855,6 +852,11 @@ export default class LoginPage extends React.Component {
             </p>
           </form>
           <footer>
+            <p>
+              <Link to="/forget-password">
+              Forget password?
+            </Link>
+            </p>
             <p>
               First time? <Link to="/phone-number">Create an account</Link>
             </p>

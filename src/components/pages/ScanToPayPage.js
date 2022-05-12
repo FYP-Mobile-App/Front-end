@@ -1,6 +1,7 @@
 import React from "react";
 import QrReader from "react-qr-scanner";
 import { Redirect } from "react-router";
+import Navbar from "../nav/Navbar";
 
 export default class ScanToPayPage extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class ScanToPayPage extends React.Component {
   }
 
   state = {
-    delay: 100,
+    // delay: 100,
   };
 
   handleScan = (data) => {
@@ -27,12 +28,14 @@ export default class ScanToPayPage extends React.Component {
     };
 
     return (
-      <div>
+      <div  className="text-center">
+        <Navbar />
         <QrReader
-          delay={this.state.delay}
+          // delay={this.state.delay}
           style={previewStyle}
           onError={this.handleError}
           onScan={this.handleScan}
+          className="qr-code"
         />
       </div>
     );

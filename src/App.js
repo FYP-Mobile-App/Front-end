@@ -11,6 +11,7 @@ import SendTransactionPage from "./components/pages/SendTransactionPage";
 import TransactionTypePage from "./components/pages/TransactionTypePage";
 import QRCodePage from "./components/pages/QRCodePage";
 import ScanToPayPage from "./components/pages/ScanToPayPage";
+import AboutUsPage from "./components/pages/AboutUsPage";
 import storage from "local-storage-fallback";
 import "./App.css";
 
@@ -53,6 +54,7 @@ export default function App() {
               <Route path="/transaction-type" component={TransactionTypePage} />
               <Route path="/qr-code" component={QRCodePage} />
               <Route path="/scan-to-pay" component={ScanToPayPage} />
+              <Route path="/about-us" component={AboutUsPage} />
             </Switch>
           </div>
         </Router>

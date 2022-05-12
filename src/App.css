@@ -572,6 +572,5 @@ body.dark {
 }
 
 .qr-code {
-  text-align: center;
-  margin: 150px;
+  margin-top: 20%;
 }

@@ -6,14 +6,10 @@ import Navbar from "../nav/Navbar";
 export default class QRCodePage extends React.Component {
   render() {
     return (
-      <div  className="text-center">
+      <div className="text-center">
         <Navbar />
         <div className="qr-code">
-          <QRCode
-            value={
-              getPhoneNumber()
-            }
-          />
+          <QRCode value={getPhoneNumber()} />
         </div>
       </div>
     );

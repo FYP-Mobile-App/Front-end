@@ -23,7 +23,6 @@ export default class HomePage extends React.Component {
     let balances = await getBalance(this.state.publicKey, tokens);
     this.setState({ tokens: tokens, balances: balances });
   }
-  
 
   render() {
     return (
@@ -63,9 +62,9 @@ export default class HomePage extends React.Component {
           <h3 className="home-page-subtitle">Your balance:</h3>
 
           {this.state.balances.map((balance) => (
-              <div key="{balance}" className="balance">
-                <strong>{balance.token.name}</strong>: {balance.balance}
-              </div>
+            <div key="{balance}" className="balance">
+              <strong>{balance.token.name}</strong>: {balance.balance}
+            </div>
           ))}
         </div>
       </div>

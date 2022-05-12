@@ -41,8 +41,9 @@ export default class SendTransactionPage extends React.Component {
         this.setState({ currency: tokenName });
       }
     });
-    let receiversPhoneNumber = "+" + this.urlParams.get("phone");
+    let receiversPhoneNumber = this.urlParams.get("phone");
     if (receiversPhoneNumber) {
+      //receiversPhoneNumber = "+" + receiversPhoneNumber;
       this.setState({ to: receiversPhoneNumber });
     }
   }

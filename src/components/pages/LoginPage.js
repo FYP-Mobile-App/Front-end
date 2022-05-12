@@ -853,9 +853,7 @@ export default class LoginPage extends React.Component {
           </form>
           <footer>
             <p>
-              <Link to="/forget-password">
-              Forget password?
-            </Link>
+              <Link to="/forget-password">Forgot password?</Link>
             </p>
             <p>
               First time? <Link to="/phone-number">Create an account</Link>

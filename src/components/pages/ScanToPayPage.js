@@ -1,7 +1,7 @@
 import React from "react";
 import QrReader from "react-qr-scanner";
-import { Redirect } from "react-router";
 import Navbar from "../nav/Navbar";
+import {withRouter} from 'react-router-dom';
 
 export default class ScanToPayPage extends React.Component {
   constructor(props) {
@@ -14,7 +14,10 @@ export default class ScanToPayPage extends React.Component {
   };
 
   handleScan = (data) => {
-    return <Redirect to={{ pathname: data }} />;
+    if (data != null){
+      var link = "/send-transaction?phone=" + data.text
+      this.props.history.push(link);
+    }
   };
 
   handleError(err) {

@@ -11,7 +11,7 @@ export default class QRCodePage extends React.Component {
         <div className="qr-code">
           <QRCode
             value={
-              "http://localhost:3000/send-transaction?phone=" + getPhoneNumber()
+              getPhoneNumber()
             }
           />
         </div>

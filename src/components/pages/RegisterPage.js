@@ -52,7 +52,7 @@ export default class SignUpPage extends React.Component {
 
     if (this.state.password === this.state.confirmPassword) {
       axios
-        .post(`http://localhost:9900/auth/signup`, user)
+        .post(`http://localhost:9900/auth/register`, user)
         .then((res) => {
           if (res.status === 200) {
             this.setState({ isRegistered: true });

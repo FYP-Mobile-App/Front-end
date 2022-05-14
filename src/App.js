@@ -6,6 +6,8 @@ import PhoneNumberPage from "./components/pages/PhoneNumberPage";
 import OTPPage from "./components/pages/OTPPage";
 import RegisterPage from "./components/pages/RegisterPage";
 import ForgetPasswordPage from "./components/pages/ForgetPasswordPage";
+import OTPForgetPasswordPage from "./components/pages/OTPForgetPasswordPage";
+import ResetPasswordPage from "./components/pages/ResetPasswordPage";
 import HomePage from "./components/pages/HomePage";
 import SendTransactionPage from "./components/pages/SendTransactionPage";
 import TransactionTypePage from "./components/pages/TransactionTypePage";
@@ -49,6 +51,8 @@ export default function App() {
               <Route path="/otp" component={OTPPage} />
               <Route path="/register" component={RegisterPage} />
               <Route path="/forget-password" component={ForgetPasswordPage} />
+              <Route path="/otp-forget-password" component={OTPForgetPasswordPage} />
+              <Route path="/reset-password" component={ResetPasswordPage} />
               <Route path="/home" component={HomePage} />
               <Route path="/send-transaction" component={SendTransactionPage} />
               <Route path="/transaction-type" component={TransactionTypePage} />

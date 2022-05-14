@@ -9,7 +9,7 @@ import "../../App.css";
 import { requestOTP } from "../../services/OTPService";
 import swal from "sweetalert";
 
-export default class OTPPage extends React.Component {
+export default class OTPForgetPasswordPage extends React.Component {
   state = {
     OTP: "",
     formSubmitted: false,
@@ -34,7 +34,7 @@ export default class OTPPage extends React.Component {
     };
 
     axios
-      .post(`http://localhost:9900/auth/register/submitotp`, phoneAndOTP)
+      .post(`http://localhost:9900/auth/forget/submitotp`, phoneAndOTP)
       .then((res) => {
         this.setState({ formSubmitted: true });
       })
@@ -47,7 +47,7 @@ export default class OTPPage extends React.Component {
 
   render() {
     if (this.state.formSubmitted) {
-      return <Redirect to={{ pathname: "/register" }} />;
+      return <Redirect to={{ pathname: "/reset-password" }} />;
     }
     return (
       <header style={HeaderStyle}>

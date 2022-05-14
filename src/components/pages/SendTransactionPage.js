@@ -13,7 +13,7 @@ import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 let Web3 = require("web3");
 let web3 = new Web3(
-  "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
+  "ws://3.138.116.209:8546"
 );
 
 export default class SendTransactionPage extends React.Component {

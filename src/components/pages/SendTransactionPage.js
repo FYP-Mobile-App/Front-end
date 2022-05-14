@@ -127,13 +127,6 @@ export default class SendTransactionPage extends React.Component {
               </button>
             </p>
           </form>
-          <footer>
-            <p>
-              <Link to="/transaction-type">
-                Choose Another Transaction Currency
-              </Link>
-            </p>
-          </footer>
         </div>
       </div>
     );

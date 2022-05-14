@@ -23,11 +23,11 @@ let minABI = [
 
 export async function getBalance(publicKey, tokens) {
   let promises = [getBalanceETH(publicKey)];
-  Object.values(tokens)
-    .filter((token) => token !== ETH)
-    .forEach((token) => {
-      promises.push(getBalanceERC20(publicKey, token));
-    });
+  // Object.values(tokens)
+  //   .filter((token) => token !== ETH)
+  //   .forEach((token) => {
+  //     promises.push(getBalanceERC20(publicKey, token));
+  //   });
   return Promise.all(promises);
 }
 

@@ -43,7 +43,6 @@ export default class SendTransactionPage extends React.Component {
     });
     let receiversPhoneNumber = this.urlParams.get("phone");
     if (receiversPhoneNumber) {
-      //receiversPhoneNumber = "+" + receiversPhoneNumber;
       this.setState({ to: receiversPhoneNumber });
     }
   }

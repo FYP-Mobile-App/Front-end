@@ -9,6 +9,8 @@ import {
   setPublicKey,
 } from "../../services/userService";
 import swal from "sweetalert";
+import logo from "../../assets/images/cadmos-logo.jpg";
+import { Link } from "react-router-dom";
 let Web3 = require("web3");
 let web3 = new Web3(
   "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
@@ -71,35 +73,48 @@ export default class SignUpPage extends React.Component {
       return <Redirect to={{ pathname: "/home" }} />;
     }
     return (
-      <div className="text-center m-5-auto">
-        <form onSubmit={this.handleSubmit} action="/home">
-          <p>
-            <label>Password</label>
-            <br />
-            <input
-              type="password"
-              name="password"
-              required
-              onChange={this.handleChange}
-            />
-          </p>
-          <p>
-            <label>Confirm Password</label>
-            <br />
-            <input
-              type="password"
-              name="confirmPassword"
-              required
-              onChange={this.handleChange}
-            />
-          </p>
-          <p>
-            <button id="sub_btn" type="submit">
-              Register
-            </button>
-          </p>
-        </form>
-      </div>
+      <header style={HeaderStyle}>
+        <img className="logo" src={logo} alt="Logo" />
+        <div className="text-center m-5-auto">
+          <form onSubmit={this.handleSubmit} action="/home">
+            <p>
+              <label>Password</label>
+              <br />
+              <input
+                type="password"
+                name="password"
+                required
+                onChange={this.handleChange}
+              />
+            </p>
+            <p>
+              <label>Confirm Password</label>
+              <br />
+              <input
+                type="password"
+                name="confirmPassword"
+                required
+                onChange={this.handleChange}
+              />
+            </p>
+            <p>
+              <button id="sub_btn" type="submit">
+                Register
+              </button>
+            </p>
+          </form>
+          <footer>
+            <p>
+              <Link to="/">Back to Login Page</Link>
+            </p>
+          </footer>
+        </div>
+      </header>
     );
   }
 }
+
+const HeaderStyle = {
+  width: "100%",
+  height: "100vh",
+};

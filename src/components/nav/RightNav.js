@@ -49,7 +49,7 @@ const RightNav = ({ open }) => {
       </li>
       <li>
         <NavLink exact to="/">
-          Log out
+          Log Out
         </NavLink>
       </li>
     </Ul>

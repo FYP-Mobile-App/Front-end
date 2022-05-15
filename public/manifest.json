@@ -1,25 +1,23 @@
 {
-    "name": "E-Wallet",
-    "short_name": "wallet",
+    "name": "CADMOS",
+    "short_name": "CADMOS",
     "theme_color": "#2196f3",
     "background_color": "#2196f3",
-    "display": "browser",
-    "orientation": "portrait",
-    "scope": "/",
-    "start_url": "/",
+    "display": "standalone",
+    "start_url": ".",
     "icons": [
         {
-            "src": "public/cadmos-192.png",
+            "src": "cadmos-192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "public/cadmos-512.png",
+            "src": "cadmos-512.png",
             "type": "image/png",
             "sizes": "512x512"
         },
         {
-            "src": "public/maskable_icon.png",
+            "src": "maskable_icon.png",
             "type": "image/png",
             "sizes": "512x512",
             "purpose": "any maskable"

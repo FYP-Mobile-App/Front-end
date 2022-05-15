@@ -76,7 +76,7 @@ export async function sendETH(receiversPublicKey, sendersPrivateKey, amount) {
       to: receiversPublicKey,
       value: web3.utils.toWei(amount),
       gas: 53000,
-      chainId: 4,
+      chainId: 1337,
     },
     sendersPrivateKey
   );

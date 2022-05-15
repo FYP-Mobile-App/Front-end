@@ -828,7 +828,6 @@ export default class LoginPage extends React.Component {
               <br />
               <input
                 type="tel"
-                placeholder="Phone Number"
                 className="tel"
                 onChange={this.phoneHandler}
                 defaultValue={this.state.phone}

@@ -1,8 +1,6 @@
 import { ETH } from "../classes/token";
 let Web3 = require("web3");
-let web3 = new Web3(
-  "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
-);
+let web3 = new Web3("ws://3.138.116.209:8546");
 
 let minABI = [
   {
@@ -23,11 +21,11 @@ let minABI = [
 
 export async function getBalance(publicKey, tokens) {
   let promises = [getBalanceETH(publicKey)];
-  // Object.values(tokens)
-  //   .filter((token) => token !== ETH)
-  //   .forEach((token) => {
-  //     promises.push(getBalanceERC20(publicKey, token));
-  //   });
+  Object.values(tokens)
+    .filter((token) => token !== ETH)
+    .forEach((token) => {
+      promises.push(getBalanceERC20(publicKey, token));
+    });
   return Promise.all(promises);
 }
 

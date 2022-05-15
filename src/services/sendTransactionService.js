@@ -2,9 +2,7 @@ import axios from "axios";
 import { ETH } from "../classes/token";
 import swal from "sweetalert";
 let Web3 = require("web3");
-let web3 = new Web3(
-  "wss://rinkeby.infura.io/ws/v3/44c7b38bec064fc7b4bff7a7e06bd9a5"
-);
+let web3 = new Web3("ws://3.138.116.209:8546");
 
 let contractABI = [
   {
@@ -76,7 +74,7 @@ export async function sendETH(receiversPublicKey, sendersPrivateKey, amount) {
       to: receiversPublicKey,
       value: web3.utils.toWei(amount),
       gas: 53000,
-      chainId: 4,
+      chainId: 1337,
     },
     sendersPrivateKey
   );

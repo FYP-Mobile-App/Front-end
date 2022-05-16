@@ -1,7 +1,7 @@
 {
     "name": "CADMOS",
     "short_name": "CADMOS",
-    "theme_color": "##EEE",
+    "theme_color": "#EEE",
     "background_color": "#EEE",
     "display": "standalone",
     "start_url": ".",

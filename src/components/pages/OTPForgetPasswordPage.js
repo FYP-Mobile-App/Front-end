@@ -6,7 +6,7 @@ import { getPhoneNumber } from "../../services/userService";
 import { Redirect } from "react-router";
 import logo from "../../assets/images/cadmos-logo.jpg";
 import "../../App.css";
-import { requestOTP } from "../../services/OTPService";
+import { getOTP } from "../../services/OTPService";
 import swal from "sweetalert";
 
 export default class OTPForgetPasswordPage extends React.Component {
@@ -16,7 +16,7 @@ export default class OTPForgetPasswordPage extends React.Component {
   };
 
   haventReceived() {
-    requestOTP(getPhoneNumber());
+    getOTP(getPhoneNumber());
   }
 
   handleChange = (value) => {

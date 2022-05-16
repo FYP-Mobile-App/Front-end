@@ -58,6 +58,8 @@ export default class ForgetPasswordPage extends React.Component {
       <header style={HeaderStyle}>
         <img className="logo" src={logo} alt="Logo" />
         <div className="text-center m-5-auto">
+        <h2>Forgot Password?</h2>
+        <h5>Reset your Password</h5>
           <form onSubmit={this.handleSubmit} action="/home">
             <p>
               <label className="heading">Phone Number</label>
